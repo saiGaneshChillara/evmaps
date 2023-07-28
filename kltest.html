@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+        <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+        <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+                alert("Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+            //document.getElementById("loc").type="text";
+            //document.getElementById("loc1").type="text";
+        }
+
+        function showPosition(position) {
+            document.getElementById("loc").value=position.coords.latitude;
+            document.getElementById("loc1").value= position.coords.longitude;
+            alert("Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude);
+          }
+        </script>
+        <script>
+          getLocation();
+        </script>
+        <script>
+        document.getElementById("lat").value=document.getElementById("loc");
+        document.getElementById("lon").value=document.getElementById("loc1");
+      </script>
+        <script>
+            $(document).ready(function() {
+              //getLocation();
+              $("#cont").hide();
+              //$(".marked-locations").hide();
+
+            });
+        </script>
+        <style>
+             .container {
+                display: block;
+                height: 10%;
+                top:0;
+                width: 100%;
+                margin: auto;
+            }
+            .search {
+                display: block;
+                height: 10%;
+                top: 12%;
+                width: 100%;
+                margin: auto;
+            }
+            #results {
+                display: block;
+                height: 10%;
+                top: 20%;
+                margin: auto;
+
+            }
+            #map {
+                position: absolute;
+                top: 27%;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                margin: auto;
+            }
+        </style>
+
+    </head>
+    <body>
+
+    
+<!--<div class="marked-locations">
+    <input type="text" value="<?php echo $lat;?>" id="latitude" placeholder="points">
+    <input type="text" value="<?php echo $lon;?>" id="longitude" placeholder="points">
+    <input type="text" value="<?php echo $lat1;?>" id="lat1" placeholder="points">
+    <input type="text" value="<?php echo $lon1;?>" id="lon1" placeholder="points">
+    <input type="text" value="<?php echo $lat2;?>" id="lat2" placeholder="points">
+    <input type="text" value="<?php echo $lon2;?>" id="lon2" placeholder="points">
+    <input type="text" value="<?php echo $lat3;?>" id="lat3" placeholder="points">
+    <input type="text" value="<?php echo $lon3;?>" id="lon3" placeholder="points">
+    <input type="text" value="<?php echo $lat4;?>" id="lat4" placeholder="points">
+    <input type="text" value="<?php echo $lon4;?>" id="lon4" placeholder="points">
+
+        </div>-->
+        <div class="container" id="cont">
+            <b>Coordinates</b>
+            <form>
+            <input type="text" name="lat" id="lat" size=20 placeholder="Destination">
+            <input type="text" name="lon" id="lon" size=20 placeholder="Destination">
+            <input type="text" id="loc">
+            <input type="text" id="loc1">
+            </form>
+        </div>
+        <br><br><br>
+        <div id="search" class="search">
+            <b>Enter Destination</b>
+            <input type="text" name="addr" value="" id="addr" size="58" />
+            <button type="button" onclick="addr_search();">Search</button>
+        </div>
+        <div id="results"></div>
+        <div id="map"></div>
+        <script src="maintest.js"></script>
+
+    </body>
+</html>
